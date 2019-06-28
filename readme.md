@@ -10,6 +10,8 @@ The main notable difference is that tag names are divided into HTML and SVG tag
 names. This is useful since React uses different typings for those two
 categories.
 
+Instead of kebab-case (e.g. `clip-path`), React uses camel-case (`clipPath`).
+
 Also, since the tag names are taken directly from React's type definition, and
 this package's version always matches the respective React version, you are
 guaranteed to always get exactly the tags that React supports.
