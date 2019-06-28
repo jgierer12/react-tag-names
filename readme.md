@@ -81,4 +81,4 @@ Yields:
 
 ## License
 
-[MIT][license] &copy; [Jonas Gierer](https://gierer.xyz)
+[MIT](license) &copy; [Jonas Gierer](https://gierer.xyz)
