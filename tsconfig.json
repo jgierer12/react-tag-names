@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "plugins": [{ "transform": "ts-transformer-keys/transformer" }],
+    "resolveJsonModule": true
+  }
+}
