@@ -8,7 +8,7 @@
     "build:pkg": "pack build",
     "build": "npm run build:ts && npm run build:pkg",
     "prerelease": "npm run build",
-    "release": "yarn publish pkg --no-interactive",
+    "release": "yarn publish pkg --non-interactive",
     "lint": "prettier --check --ignore-path .gitignore '**/*.{json,md,js,ts}'",
     "test": "npm run lint && npm run build"
   },
