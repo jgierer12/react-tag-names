@@ -1,21 +1,55 @@
 {
-  "private": true,
+  "name": "react-tag-names",
+  "version": "16.8.23",
+  "license": "MIT",
+  "description": "List of React's HTML and SVG tag names",
   "scripts": {
-    "build": "ts-node --compiler ttypescript build.ts",
-    "test": "prettier --check --ignore-path .gitignore '**/*.{ts,json,md}'",
+    "build:ts": "ts-node --compiler ttypescript --project tsconfig.build.json build.ts",
+    "build:pkg": "pack build",
+    "build": "npm run build:ts && npm run build:pkg",
     "prerelease": "npm run build",
-    "release": "yarn publish dist --non-interactive"
+    "release": "yarn publish pkg --no-interactive",
+    "lint": "prettier --check --ignore-path .gitignore '**/*.{json,md,js,ts}'",
+    "test": "npm run lint && npm run build"
   },
-  "dependencies": {
-    "@types/react": "latest"
+  "keywords": [
+    "react",
+    "tag",
+    "name",
+    "html",
+    "svg"
+  ],
+  "repository": "jgierer12/react-tag-names",
+  "bugs": "https://github.com/jgierer12/react-tag-names/issues",
+  "author": "Jonas Gierer <jonas@gierer.xyz> (https://gierer.xyz)",
+  "main": "index.ts",
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg",
+        {
+          "tsconfig": "tsconfig.pkg.json"
+        }
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
+    ]
   },
   "devDependencies": {
     "@jgierer12/js-configs": "^1.0.1",
+    "@pika/pack": "^0.4.0",
+    "@pika/plugin-build-node": "^0.4.0",
+    "@pika/plugin-build-web": "^0.4.0",
+    "@pika/plugin-ts-standard-pkg": "^0.4.0",
     "@types/mkdirp": "^0.5.2",
     "@types/node": "^12.0.10",
+    "@types/react": "latest",
     "@types/rimraf": "^2.0.2",
     "mkdirp": "^0.5.1",
-    "np": "^5.0.3",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3",
     "ts-node": "^8.3.0",
