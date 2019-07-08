@@ -1,21 +1,23 @@
 import { keys } from "ts-transformer-keys";
-import { copyFile, writeFile } from "fs";
+import { writeFile } from "fs";
 import * as rimraf from "rimraf";
 import * as mkdirp from "mkdirp";
 
 import { ReactHTML, ReactSVG } from "react";
+
 import { version } from "./node_modules/@types/react/package.json";
+import * as pkg from "./package.json";
 
 import { noop, bail } from "./utils";
 
 const htmlTagNames = keys<ReactHTML>();
 const svgTagNames = keys<ReactSVG>();
 
-const prepareDir = (cb = noop) => {
+const prepare = (cb = noop) => {
   rimraf(
-    `dist`,
+    `src`,
     bail(() => {
-      mkdirp(`dist`, bail(cb));
+      mkdirp(`src`, bail(cb));
     })
   );
 };
@@ -25,42 +27,27 @@ const writeFiles = (cb = noop) => {
 
   const complete = () => {
     completed++;
-    if (completed === 3) {
+    if (completed === 2) {
       cb();
     }
   };
 
   writeFile(
-    `dist/index.json`,
-    JSON.stringify({ htmlTagNames, svgTagNames }, null, 2),
+    `src/index.ts`,
+    `export const htmlTagNames = ${JSON.stringify(htmlTagNames, null, 2)};
+export const svgTagNames = ${JSON.stringify(svgTagNames, null, 2)};
+export default [...htmlTagNames, ...svgTagNames];
+`,
     bail(complete)
   );
 
   writeFile(
-    `dist/package.json`,
-    JSON.stringify(
-      {
-        name: `react-tag-names`,
-        version,
-        license: `MIT`,
-        main: `index.json`,
-        files: [`index.json`],
-        description: `List of React's HTML and SVG tag names`,
-        keywords: [`react`, `tag`, `name`, `html`, `svg`],
-        repository: `jgierer12/react-tag-names`,
-        bugs: `https://github.com/jgierer12/react-tag-names/issues`,
-        author: `Jonas Gierer <jonas@gierer.xyz> (https://gierer.xyz)`,
-      },
-      null,
-      2
-    ),
+    `package.json`,
+    JSON.stringify({ ...pkg, version }, null, 2) + `\n`,
     bail(complete)
   );
-
-  copyFile(`readme.md`, `dist/readme.md`, bail(complete));
-  copyFile(`license`, `dist/license`, bail(complete));
 };
 
-prepareDir(() => {
+prepare(() => {
   writeFiles();
 });
