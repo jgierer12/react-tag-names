@@ -1,6 +1,6 @@
 {
   "name": "react-tag-names",
-  "version": "16.8.23",
+  "version": "16.8.24",
   "license": "MIT",
   "description": "List of React's HTML and SVG tag names",
   "scripts": {
