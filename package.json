@@ -5,7 +5,7 @@
   "description": "List of React's HTML and SVG tag names",
   "scripts": {
     "build:ts": "ts-node --compiler ttypescript --project tsconfig.build.json build.ts",
-    "build:pkg": "pack build",
+    "build:pkg": "pika build",
     "build": "npm run build:ts && npm run build:pkg",
     "prerelease": "npm run build",
     "release": "yarn publish pkg --non-interactive",
@@ -41,10 +41,10 @@
   },
   "devDependencies": {
     "@jgierer12/js-configs": "^1.0.1",
-    "@pika/pack": "^0.4.0",
-    "@pika/plugin-build-node": "^0.4.0",
-    "@pika/plugin-build-web": "^0.4.0",
-    "@pika/plugin-ts-standard-pkg": "^0.4.0",
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-node": "^0.6.0",
+    "@pika/plugin-build-web": "^0.6.0",
+    "@pika/plugin-ts-standard-pkg": "^0.6.0",
     "@types/mkdirp": "^0.5.2",
     "@types/node": "^12.0.10",
     "@types/react": "latest",
