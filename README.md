@@ -6,15 +6,14 @@ internally.
 
 ## react-tag-names vs html-tag-names
 
-The main notable difference is that tag names are divided into HTML and SVG tag
-names. This is useful since React uses different typings for those two
-categories.
+- Tag names are divided into HTML and SVG tag names. This is useful since React
+  uses different typings for those two categories.
 
-Instead of kebab-case (e.g. `clip-path`), React uses camel-case (`clipPath`).
+- Instead of kebab-case (e.g. `clip-path`), React uses camel-case (`clipPath`).
 
-Also, since the tag names are taken directly from React's type definition, and
-this package's version always matches the respective React version, you are
-guaranteed to always get exactly the tags that React supports.
+- Since the tag names are taken directly from React's type definition, and this
+  package's version always matches the respective React version, you are
+  guaranteed to always get exactly the tags that React supports.
 
 ## Install
 
@@ -24,48 +23,74 @@ npm install react-tag-names
 
 ## Usage
 
-```js
-import { htmlTagNames, svgTagNames } from "react-tag-names";
+### All (default export)
 
-console.log(htmlTagNames.slice(0, 20));
+```js
+import reactTagNames from "react-tag-names";
 ```
 
-Yields:
+`reactTagNames: string[]` &mdash; List of all React tag names (sorted HTML first
+and SVG last)
 
 ```js
 [
   "a",
   "abbr",
   "address",
-  "area",
-  "article",
-  "aside",
-  "audio",
-  "b",
-  "base",
-  "bdi",
-  "bdo",
-  "big",
-  "blockquote",
-  "body",
-  "br",
-  "button",
-  "canvas",
-  "caption",
-  "cite",
-  "code",
+  // ...
+  "video",
+  "wbr",
+  "webview",
+
+  "animate",
+  "circle",
+  "clipPath",
+  // ...
+  "tspan",
+  "use",
+  "view",
 ];
 ```
 
-## API
+### HTML (`htmlTagNames` export)
 
-### `htmlTagNames`
+```js
+import { htmlTagNames } from "react-tag-names";
+```
 
-`string[]` &mdash; List of lowercase HTML tag names.
+`htmlTagNames: string[]` &mdash; List of HTML React tag names
 
-### `svgTagNames`
+```js
+[
+  "a",
+  "abbr",
+  "address",
+  // ...
+  "video",
+  "wbr",
+  "webview",
+];
+```
 
-`string[]` &mdash; List of lowercase SVG tag names.
+### SVG (`svgTagNames` export)
+
+```js
+import { svgTagNames } from "react-tag-names";
+```
+
+`svgTagNames: string[]` &mdash; List of SVG React tag names
+
+```js
+[
+  "animate",
+  "circle",
+  "clipPath",
+  // ...
+  "tspan",
+  "use",
+  "view",
+];
+```
 
 ## Related
 
