@@ -11,8 +11,7 @@ internally.
 
 - Instead of kebab-case (e.g. `clip-path`), React uses camel-case (`clipPath`).
 
-- Since the tag names are taken directly from React's type definition, and this
-  package's version always matches the respective React version, you are
+- Since the tag names are taken directly from React's type definition, you are
   guaranteed to always get exactly the tags that React supports.
 
 ## Install
@@ -20,6 +19,12 @@ internally.
 ```sh
 npm install react-tag-names
 ```
+
+> _Note: Previous versioning of `react-tag-names` was coupled to respective
+> react versions (e.g. `react@16.9.2` => `react-tag-names@16.9.2`). As React's
+> list of tag names only changes very rarely, this convention has been
+> discontinued. `react-tag-names` now follows its own versioning, starting at
+> v1.0.0._
 
 ## Usage
 
