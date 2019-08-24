@@ -5,9 +5,6 @@ import * as mkdirp from "mkdirp";
 
 import { ReactHTML, ReactSVG } from "react";
 
-import { version } from "./node_modules/@types/react/package.json";
-import * as pkg from "./package.json";
-
 import { noop, bail } from "./utils";
 
 const htmlTagNames = keys<ReactHTML>();
@@ -27,7 +24,7 @@ const writeFiles = (cb = noop) => {
 
   const complete = () => {
     completed++;
-    if (completed === 2) {
+    if (completed === 1) {
       cb();
     }
   };
@@ -38,12 +35,6 @@ const writeFiles = (cb = noop) => {
 export const svgTagNames = ${JSON.stringify(svgTagNames, null, 2)};
 export default [...htmlTagNames, ...svgTagNames];
 `,
-    bail(complete)
-  );
-
-  writeFile(
-    `package.json`,
-    JSON.stringify({ ...pkg, version }, null, 2) + `\n`,
     bail(complete)
   );
 };

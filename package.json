@@ -1,6 +1,6 @@
 {
   "name": "react-tag-names",
-  "version": "16.9.3",
+  "version": "0.0.0",
   "license": "MIT",
   "description": "List of React's HTML and SVG tag names",
   "scripts": {
@@ -47,7 +47,7 @@
     "@pika/plugin-ts-standard-pkg": "^0.6.0",
     "@types/mkdirp": "^0.5.2",
     "@types/node": "^12.0.10",
-    "@types/react": "latest",
+    "@types/react": "^16.9.2",
     "@types/rimraf": "^2.0.2",
     "mkdirp": "^0.5.1",
     "prettier": "^1.18.2",
